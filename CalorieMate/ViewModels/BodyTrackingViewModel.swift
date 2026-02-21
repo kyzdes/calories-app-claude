@@ -63,6 +63,19 @@ final class BodyTrackingViewModel {
         let entry = WeightEntry(weight: value)
         context.insert(entry)
         showWeightSheet = false
+
+        // Sync to HealthKit if enabled
+        let healthKit = HealthKitService.shared
+        if healthKit.isAuthorized {
+            Task {
+                let success = await healthKit.saveWeight(value)
+                if success {
+                    await MainActor.run {
+                        entry.syncedToHealthKit = true
+                    }
+                }
+            }
+        }
     }
 
     // MARK: - Measurements

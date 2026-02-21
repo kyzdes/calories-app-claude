@@ -152,6 +152,14 @@ final class FoodLogViewModel {
         product.usageCount += 1
         product.lastUsed = Date()
 
+        // Экспорт калорий в HealthKit
+        let healthKit = HealthKitService.shared
+        if healthKit.isAuthorized {
+            Task {
+                _ = await healthKit.saveCalories(Double(calculatedCalories), date: date)
+            }
+        }
+
         // Сохраняем продукт в локальный кэш, если из OFF
         if product.source == .off {
             // Проверяем, есть ли уже в кэше

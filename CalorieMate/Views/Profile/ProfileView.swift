@@ -18,6 +18,7 @@ struct ProfileView: View {
                 if let profile {
                     goalSection(profile)
                     parametersSection(profile)
+                    integrationsSection
                     dataSection
                     aboutSection
                 }
@@ -122,6 +123,31 @@ struct ProfileView: View {
             }
         } header: {
             Text("Параметры")
+        }
+    }
+
+    // MARK: - Integrations Section
+
+    private var integrationsSection: some View {
+        Section {
+            NavigationLink {
+                HealthKitSettingsView()
+            } label: {
+                HStack {
+                    Image(systemName: "heart.fill")
+                        .foregroundStyle(.red)
+                        .font(.system(size: 16))
+                    Text("Apple Health")
+                        .font(.cmBody)
+                        .foregroundStyle(Color.cmTextPrimary)
+                    Spacer()
+                    Text(HealthKitService.shared.isAuthorized ? "Подключено" : "Не подключено")
+                        .font(.cmCaption)
+                        .foregroundStyle(HealthKitService.shared.isAuthorized ? Color.cmSuccess : Color.cmTextTertiary)
+                }
+            }
+        } header: {
+            Text("Интеграции")
         }
     }
 
