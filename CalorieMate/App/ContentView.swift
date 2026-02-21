@@ -11,12 +11,7 @@ struct ContentView: View {
 
     var body: some View {
         if hasProfile && !showOnboarding {
-            // TODO: Итерация 3 — TabBar с 5 табами
-            VStack {
-                Text("Главный экран")
-                    .font(.cmH1)
-                    .foregroundStyle(Color.cmTextPrimary)
-            }
+            MainTabView()
         } else {
             OnboardingContainerView {
                 showOnboarding = false
