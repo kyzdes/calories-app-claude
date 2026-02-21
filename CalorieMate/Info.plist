@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSCameraUsageDescription</key>
+	<string>CalorieMate использует камеру для сканирования штрих-кодов продуктов</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>CalorieMate читает данные о весе, росте и поле из Apple Health для расчёта дневной нормы калорий</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>CalorieMate записывает данные о весе и потреблённых калориях в Apple Health для комплексного отслеживания здоровья</string>
+</dict>
+</plist>
