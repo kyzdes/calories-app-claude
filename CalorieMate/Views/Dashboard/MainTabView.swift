@@ -54,9 +54,7 @@ struct MainTabView: View {
             fabButton
         }
         .sheet(isPresented: $showAddFoodSheet) {
-            // TODO: Итерация 4 — AddFoodSheet
-            Text("Добавление еды")
-                .font(.cmH2)
+            AddFoodSheet(date: Date())
                 .presentationDetents([.large])
         }
     }

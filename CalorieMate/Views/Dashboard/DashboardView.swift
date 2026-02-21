@@ -104,10 +104,11 @@ struct DashboardView: View {
         }
         .background(Color.cmBgPrimary)
         .sheet(isPresented: $showAddFoodSheet) {
-            // TODO: Итерация 4 — AddFoodSheet
-            Text("Добавление еды")
-                .font(.cmH2)
-                .presentationDetents([.large])
+            AddFoodSheet(
+                date: viewModel.selectedDate,
+                preselectedMealType: selectedMealType
+            )
+            .presentationDetents([.large])
         }
     }
 }
