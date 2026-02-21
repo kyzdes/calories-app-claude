@@ -5,6 +5,7 @@ struct AddFoodSheet: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @State private var viewModel = FoodLogViewModel()
+    @State private var showScanner = false
     let date: Date
     var preselectedMealType: MealType?
 
@@ -75,6 +76,17 @@ struct AddFoodSheet: View {
                 }
                 .presentationDetents([.large])
             }
+            .fullScreenCover(isPresented: $showScanner) {
+                BarcodeScannerView(
+                    onProductFound: { product in
+                        viewModel.selectProduct(product, preselectedMeal: preselectedMealType)
+                    },
+                    onCreateProduct: { barcode in
+                        viewModel.newProductBarcode = barcode
+                        viewModel.showCreateSheet = true
+                    }
+                )
+            }
         }
     }
 
@@ -103,9 +115,8 @@ struct AddFoodSheet: View {
             .background(Color.cmBgTertiary)
             .clipShape(RoundedRectangle(cornerRadius: 12))
 
-            // TODO: Итерация 5 — кнопка сканера
             Button {
-                // Scanner will be added in Iteration 5
+                showScanner = true
             } label: {
                 Image(systemName: "barcode.viewfinder")
                     .font(.system(size: 22))

@@ -17,9 +17,7 @@ struct MainTabView: View {
                         Label("Сегодня", systemImage: "flame.fill")
                     }
 
-                // TODO: Итерация 7 — ProgressView
-                Text("Прогресс")
-                    .font(.cmH1)
+                ProgressTabView()
                     .tag(Tab.progress)
                     .tabItem {
                         Label("Прогресс", systemImage: "chart.line.uptrend.xyaxis")
@@ -32,17 +30,13 @@ struct MainTabView: View {
                         Label("", systemImage: "")
                     }
 
-                // TODO: Итерация 6 — BodyTrackingView
-                Text("Тело")
-                    .font(.cmH1)
+                BodyTrackingView()
                     .tag(Tab.body)
                     .tabItem {
                         Label("Тело", systemImage: "figure.stand")
                     }
 
-                // TODO: Итерация 8 — ProfileView
-                Text("Профиль")
-                    .font(.cmH1)
+                ProfileView()
                     .tag(Tab.profile)
                     .tabItem {
                         Label("Профиль", systemImage: "person.circle")
