@@ -102,6 +102,10 @@ struct DashboardView: View {
                 .animation(.easeInOut(duration: 0.3), value: viewModel.showUndoToast)
             }
         }
+        .sensoryFeedback(.warning, trigger: viewModel.totalCalories(from: todayEntries)) { oldVal, newVal in
+            let goal = profile?.dailyCalorieGoal ?? 2000
+            return oldVal <= goal && newVal > goal
+        }
         .background(Color.cmBgPrimary)
         .sheet(isPresented: $showAddFoodSheet) {
             AddFoodSheet(

@@ -72,6 +72,7 @@ struct PortionSheet: View {
         }
         .padding(16)
         .padding(.top, 8)
+        .sensoryFeedback(.selection, trigger: viewModel.selectedMealType)
     }
 
     @ViewBuilder

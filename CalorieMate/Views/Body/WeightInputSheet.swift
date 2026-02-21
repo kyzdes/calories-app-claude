@@ -40,5 +40,7 @@ struct WeightInputSheet: View {
         }
         .padding(16)
         .padding(.top, 8)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Записать вес")
     }
 }

@@ -101,6 +101,9 @@ struct BodyTrackingView: View {
         .background(Color.cmBgSecondary)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding(.horizontal, 16)
+        .sensoryFeedback(.success, trigger: viewModel.showWeightSheet) { old, new in
+            old && !new
+        }
     }
 
     // MARK: - Period Picker
